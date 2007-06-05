@@ -1,5 +1,4 @@
-`cens.p` <-
-function(family = "NO", type = c( "right", "left", "interval"),...)
+cens.p <- function(family = "NO", type = c( "right", "left", "interval"),...)
   {
     #if (!is.Surv(y)) stop(paste("the y variable is not a Surv object"))
      type <- match.arg(type)

@@ -33,9 +33,8 @@ fun <- if (type=="left")
         if (!is.Surv(y)) stop(paste("the y variable is not a Surv object"))
         dfun0 <-ifelse(y[,"status"]==0, cdf(y[,1], lower.tail=F, log.p=T, ...),0) # right  equivalent: log(1-cdf(y[,1],...)) cdf(y[,1], lower.tail=F, log.p=T, ...) 
         dfun1 <-ifelse(y[,"status"]==1, pdf(y[,1],log = TRUE,...),0)# death
-        dfun2 <-ifelse(y[,"status"]==2, cdf(y[,1],  log.p=T, ...),0)# left  cdf(y[,1], log.p=T, ...)
-        suppressWarnings(dfun3 <-ifelse(y[,"status"]==3, log(cdf(y[,2],...)-cdf(y[,1],...)),0))# interval   )
-        #dfun3 <-ifelse(y[,"status"]==3, log(cdf(y[,2],...)-cdf(y[,1],...)),0)# interval         
+        dfun2 <-ifelse(y[,"status"]==2, cdf(y[,1],  log.p=T, ...),0)# left  
+        suppressWarnings(dfun3 <-ifelse(y[,"status"]==3, log(cdf(y[,2],...)-cdf(y[,1],...)),0))# interval
         dfun <- dfun0+dfun1+dfun2+dfun3
         dfun <- if (log == TRUE) dfun else exp(dfun)
         dfun

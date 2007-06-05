@@ -4,9 +4,11 @@ gen.cens <- function(family = "NO",
                       ...)
  {
   type <- match.arg(type)
-  fname <- family
-  if (mode(family) != "character" && mode(family) != "name")
-  fname <- as.character(substitute(family))
+   fam  <- as.gamlss.family(family) # family 
+    fname <- fam$family[[1]] # family name  
+ # fname <- family
+ # if (mode(family) != "character" && mode(family) != "name")
+ # fname <- as.character(substitute(family))
    dfun <- paste(paste("d",fname,sep=""), substr(type,start=1,stop=1),substr(name,start=1,stop=1), sep="") # say dNOrc
    pfun <- paste(paste("p",fname,sep=""), substr(type,start=1,stop=1),substr(name,start=1,stop=1), sep="") # say pNOrc
    qfun <- paste(paste("q",fname,sep=""), substr(type,start=1,stop=1),substr(name,start=1,stop=1), sep="") # say qNOrc
@@ -26,7 +28,7 @@ gen.cens <- function(family = "NO",
    eval(dummy <- cens.q(par, family = fname, type = type, ...))
    eval(call("<-",as.name(qfun),dummy), envir=parent.frame(n = 1))   
    # generate the fitting distribution
-   eval(dummy <- cens(family = fname, type = type, name=name, local=FALSE, ...))
+   eval(dummy <- cens(family = fam, type = type, name=name, local=FALSE, ...))
    eval(call("<-",as.name(fun),dummy), envir=parent.frame(n = 1))
   cat("A censored family of distributions from",  fname, "has been generated \n", 
   "and saved under the names: ", "\n",paste(alldislist, sep=","),"\n")#

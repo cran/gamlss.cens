@@ -1,9 +1,7 @@
 
 # functions
-
-export(gen.cens, cens.d, cens.p,cens.q, cens)
+export(gen.cens, cens.d, cens.p, cens.q, cens)
 importFrom(survival, Surv, is.Surv)
-
 
 
 # datasets #export(lange)
