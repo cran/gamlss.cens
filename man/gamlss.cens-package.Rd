@@ -37,7 +37,7 @@ Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location s
 \keyword{ distribution }
 \keyword{ regression }
 
-\seealso{\code{\link[gamlss]{gamlss}},\code{\link[gamlss]{gamlss.family}}  
+\seealso{\code{\link[gamlss]{gamlss}},\code{\link[gamlss.dist]{gamlss.family}}  
 }
 \examples{
 library(survival)

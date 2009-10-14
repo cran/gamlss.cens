@@ -5,7 +5,7 @@
 \description{
 The \code{gen.cens()} function allows the user to generate a
 \code{d}, \code{p}, (dummy) \code{q} and fitting  \code{gamlss} functions for  
-censor and interval response variables.  The function can take any  \code{\link[gamlss]{gamlss.family}} distribution. 
+censor and interval response variables.  The function can take any  \code{\link[gamlss.dist]{gamlss.family}} distribution. 
 }
 \usage{
 gen.cens(family = "NO", name = "cens", 
@@ -13,17 +13,17 @@ gen.cens(family = "NO", name = "cens",
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{family}{a \code{\link[gamlss]{gamlss.family}} object, which is 
+  \item{family}{a \code{\link[gamlss.dist]{gamlss.family}} object, which is 
         used to define the distribution and the link functions of the various parameters.
         The distribution families supported by \code{gamlss()} 
-        can be found in \code{\link[gamlss]{gamlss.family}} and in the package \code{gamlss.dist}.}
+        can be found in \code{\link[gamlss.dist]{gamlss.family}} and in the package \code{gamlss.dist}.}
   \item{name}{the characters you want to add to the name of new functions, by default is the first letter of \code{type} and \code{c}
                i.e WEIic for WEI (weibull) interval response variable}
    \item{type}{whether \code{right}, \code{left}  or in \code{interval} censoring is required, 
               (right is the default) }
   \item{\dots}{for extra arguments}
 }
-\details{}
+
 \value{
   Returns  the \code{d}, \code{p},  (dummy) \code{q} and the fitting used in the fitting gamlss algorithm (The one 
          used in the fitting gamlss algorithm)  of a \code{gamlss.family} distribution. 
@@ -38,7 +38,7 @@ Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location s
 \emph{Journal of Statistical Software}, Vol. \bold{23}, Issue 7, Dec 2007, \url{http://www.jstatsoft.org/v23/i07}.
  }
 \author{Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk} and Bob Rigby \email{r.rigby@londonmet.ac.uk}}
-\note{}
+
 \seealso{ \code{\link{cens.d}}, \code{\link{cens.p}}, \code{\link{cens}}  }
 \examples{
 library(gamlss.dist)

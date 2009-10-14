@@ -4,7 +4,7 @@
 Censored Inverse Cumulative Probability Density Function of a gamlss.family  
 Distribution}
 \description{
-Creates the inverse cumulative density function from a current \code{\link[gamlss]{gamlss.family}} 
+Creates the inverse cumulative density function from a current \code{\link[gamlss.dist]{gamlss.family}} 
 distribution suitable for censored or interval response variable data.
 This is a dummy function identical to the uncensored one but it is needed for 
 consistency in centile estimation from censored data. 
@@ -14,10 +14,10 @@ cens.q(family = "NO", ...)
 }
 
 \arguments{
-  \item{family}{ a \code{\link[gamlss]{gamlss.family}} object, which is used to 
+  \item{family}{ a \code{\link[gamlss.dist]{gamlss.family}} object, which is used to 
           define the distribution and the link functions of the various parameters. 
           The distribution families supported by \code{gamlss()} can be found in 
-          \code{\link[gamlss]{gamlss.family}}.}
+          \code{\link[gamlss.dist]{gamlss.family}}.}
   \item{\dots}{for extra arguments }
 }
 \details{

@@ -43,12 +43,10 @@
     function \code{Surv()} of \pkg{survival}.}
   }
 }
-\details{
-}
+
 \source{
 Prof.  Jane Sutherland, London Metropolitan University  
 }
-\references{}
 \examples{
 data(lip)
 with(lip, y)

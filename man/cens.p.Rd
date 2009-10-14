@@ -2,7 +2,7 @@
 \alias{cens.p}
 \title{Censored Cumulative Probability Density Function of a gamlss.family Distribution}
 \description{
-Creates a cumulative density function from a current \code{\link[gamlss]{gamlss.family}}  
+Creates a cumulative density function from a current \code{\link[gamlss.dist]{gamlss.family}}  
 distribution suitable for censored or interval response variable data.
 }
 \usage{
@@ -10,10 +10,10 @@ cens.p(family = "NO", type = c("right", "left", "interval"), ...)
 }
 
 \arguments{
-  \item{family}{ a \code{\link[gamlss]{gamlss.family}} object, which is used to 
+  \item{family}{ a \code{\link[gamlss.dist]{gamlss.family}} object, which is used to 
           define the distribution and the link functions of the various parameters. 
           The distribution families supported by \code{gamlss()} can be found in 
-          \code{\link[gamlss]{gamlss.family}}.}
+          \code{\link[gamlss.dist]{gamlss.family}}.}
   \item{type}{ whether \code{right}, \code{left}  or in \code{interval} censoring is required, (right is the default) }
   \item{\dots}{for extra arguments }
 }
