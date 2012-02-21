@@ -1,0 +1,14 @@
+54139f71a4768ed82088ac81fdac3ee2 *DESCRIPTION
+69910324877986dd4d9dbb228f03113d *NAMESPACE
+e2a82adf3f3bd056124fb477c0e4d394 *R/cens.R
+e6b308f1bd07be527259d4f711f62114 *R/cens.d.R
+dccdb7bc47fa5842b2ca5d51bf95cc77 *R/cens.p.R
+9bfc0c444d6dc4d314f458b42c337eef *R/gen.cens.R
+45afd2c8f5551fe67df93b971bcee3bc *data/lip.rda
+8054701cfb3e2e3e90a3214bb2ddf669 *man/cens.Rd
+4e2e145eaed4eab79c9ba92cf48aa9c7 *man/cens.d.Rd
+0a8824633e32e72ffb60712ba89d40e9 *man/cens.p.Rd
+0a2b7bafb0f01dd30e58e0e59ee3dfc0 *man/cens.q.Rd
+e939784636726d2e457327629b5d1fb9 *man/gamlss.cens-package.Rd
+941c62d0535b0a807c36163cfa296445 *man/gen.cens.Rd
+3d6d8f6caad8e1c46d223dda5885dca0 *man/lip.Rd
