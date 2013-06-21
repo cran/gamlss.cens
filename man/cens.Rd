@@ -63,6 +63,8 @@ is \code{eps * pmax(abs(x), 1)} where  \code{eps<-sqrt(.Machine$double.eps)}.
 The default \code{delta} could be inappropriate for 
 specific applications and can be overwritten by using the argument \code{delta}.
 
+Note that in order to get the correct standard errors you have to generate the "d" function by using
+\code{gen.cens()}.
 }
 
 \seealso{\code{\link{cens.d}}, \code{\link{cens.p}},  \code{\link{gen.cens}} 
@@ -76,43 +78,58 @@ library(survival)
 # example from survreg() 
 # fitting the exponential distribution
 mexp<-survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian, dist='exponential')
-gexp<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, family=cens(EXP), c.crit=0.00001)
-if(abs(-2*mexp$loglik[2]-deviance(gexp))>0.001) stop(paste("descrepancies in exponential models")) 
-if(sum(coef(mexp)-coef(gexp))>0.001) warning(paste("descrepancies in coef in exponential models")) 
+gexp<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, 
+             family=cens(EXP), c.crit=0.00001)
+if(abs(-2*mexp$loglik[2]-deviance(gexp))>0.001) 
+         stop(paste("descrepancies in exponential models")) 
+if(sum(coef(mexp)-coef(gexp))>0.001) 
+        warning(paste("descrepancies in coef in exponential models")) 
 summary(mexp)
+gen.cens(EXP)
 summary(gexp)
 # fitting different distributions
 # weibull 
 mwei <-survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian, dist='weibull')
-gwei<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, family=cens(WEI, delta=c(0.0001,0.0001)), c.crit=0.00001)
-if(abs(-2*mwei$loglik[2]-deviance(gwei))>0.005) stop(paste("descrepancies in deviance in WEI")) 
+gwei<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, 
+             family=cens(WEI, delta=c(0.0001,0.0001)), c.crit=0.00001)
+if(abs(-2*mwei$loglik[2]-deviance(gwei))>0.005) 
+        stop(paste("descrepancies in deviance in WEI")) 
 scoef <- sum(coef(mwei)-coef(gwei))
-if(abs(scoef)>0.005) warning(cat("descrepancies in coef in WEI of ", scoef, "\n")) 
+if(abs(scoef)>0.005) 
+         warning(cat("descrepancies in coef in WEI of ", scoef, "\n")) 
 # WEI3 is weibull parametrised with mu as the mean
-gwei3 <- gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, family=cens(WEI3)) 
+gwei3 <- gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, 
+                 family=cens(WEI3)) 
 # log normal
-mlogno <-survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian, dist='lognormal')
-glogno<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, family=cens(LOGNO, delta=c(0.001,0.001)), c.cyc=0.00001)
-if(abs(-2*mlogno$loglik[2]-deviance(glogno))>0.005) stop(paste("descrepancies in deviance in LOGNO")) 
+mlogno <-survreg(Surv(futime, fustat) ~ ecog.ps + rx, ovarian, 
+                  dist='lognormal')
+glogno<-gamlss(Surv(futime, fustat) ~ ecog.ps + rx, data=ovarian, 
+                family=cens(LOGNO, delta=c(0.001,0.001)), c.cyc=0.00001)
+if(abs(-2*mlogno$loglik[2]-deviance(glogno))>0.005) 
+          stop(paste("descrepancies in deviance in LOGNO")) 
 coef(mlogno);coef(glogno) 
 #-------------------------------------------------------------------- 
 # now interval response variable 
 data(lip)
 with(lip, y)
 mg1<-survreg(y ~ poly(Tem,2)+poly(pH,2)+poly(aw,2), data=lip, dist="weibull")
-gg1<- gamlss(y ~ poly(Tem,2)+poly(pH,2)+poly(aw,2), data=lip, family=cens(WEI,type="interval"), 
-                               c.crit=0.00001, n.cyc=200, trace=FALSE)
+gg1<- gamlss(y ~ poly(Tem,2)+poly(pH,2)+poly(aw,2), data=lip, 
+      family=cens(WEI,type="interval"), c.crit=0.00001, n.cyc=200, trace=FALSE)
 summary(mg1)
+gen.cens(WEI,type="interval")
 summary(gg1)
 #--------------------------------------------------------------------
 # now fitting discretised continuous distribution to count data
 # fitting discretised Gamma
 data(species)
- mGA<-gamlss(Surv(fish,fish+1,type= "interval2")~log(lake)+I(log(lake)^2), sigma.fo=~log(lake), 
-              data=species, family=cens(GA, type="interval"))
+# first generate the distributions
+gen.cens(GA, type="interval")
+gen.cens(IG, type="interval")
+ mGA<-gamlss(Surv(fish,fish+1,type= "interval2")~log(lake)+I(log(lake)^2), 
+       sigma.fo=~log(lake), data=species, family=GAic)
 # fitting discretised inverse Gaussian
- mIG<-gamlss(Surv(fish,fish+1,type= "interval2")~log(lake)+I(log(lake)^2), sigma.fo=~log(lake), 
-              data=species, family=cens(IG, type="interval"))
+ mIG<-gamlss(Surv(fish,fish+1,type= "interval2")~log(lake)+I(log(lake)^2), 
+      sigma.fo=~log(lake), data=species, family=IGic)
 AIC(mGA,mIG)
 plot(fish~log(lake), data=species)
 with(species, lines(log(lake)[order(lake)], fitted(mIG)[order(lake)]))             

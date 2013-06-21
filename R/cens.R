@@ -8,9 +8,13 @@ cens <- function (
                 ...)
 {
 #------------------------------------------
-     # dummy name
+## dummy name
      TEST <- "TEST" 
-     type <- match.arg(type)
+     type <- match.arg(type)   
+##   fname <- family
+##   if (mode(family) != "character" && mode(family) != "name")
+##    fname <- as.character(substitute(family))  
+##     fam1 <- eval(parse(text=fname)) 
      fam  <- as.gamlss.family(family) # family 
     fname <- fam$family[[1]] # family name
    family <- c("None", "None") 
@@ -259,5 +263,7 @@ body(fam$dldt) <- parse(text=sTAU[length(sTAU)])
            yval <- gsub("y", "y[,1]",  deparse(body(fam$y.valid)))
            body(fam$y.valid) <- parse(text=yval)[[1]] 
            })
-      fam 
+##          nfam <- function() fam
+## formals(nfam) <- formals(fam1) 
+ fam
 }
