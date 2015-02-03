@@ -2,8 +2,8 @@
 # functions
 export(gen.cens, cens.d, cens.p, cens.q, cens)
 importFrom(survival, Surv, is.Surv)
-importFrom(gamlss)
-importFrom(gamlss.dist)
+import(gamlss)
+importFrom(gamlss.dist, as.gamlss.family)
 
 # datasets #export(lange)
 
