@@ -2,7 +2,7 @@
 \alias{gamlss.cens-package}
 \alias{gamlss.cens}
 \docType{package}
-\title{The GAMLSS Add On Package for Censored Data}
+\title{The GAMLSS Add-On Package for Censored Data}
 \description{
 The purpose of this package is to allow the user of the GAMLSS models to 
 be able to fit parametric distributions to data with censored or interval response variable.

@@ -1,7 +1,7 @@
 \name{cens.d}
 \alias{cens.d}
 
-\title{Censored probability density function of a gamlss.family distribution}
+\title{Censored Probability Density Function of a gamlss.family Distribution}
 \description{
  Creates a probability density function from a current \code{\link[gamlss.dist]{gamlss.family}}  
  distribution to be used for fitting a censored or interval response variable.

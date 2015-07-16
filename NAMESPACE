@@ -4,6 +4,8 @@ export(gen.cens, cens.d, cens.p, cens.q, cens)
 importFrom(survival, Surv, is.Surv)
 import(gamlss)
 importFrom(gamlss.dist, as.gamlss.family)
+import(stats)
+import(graphics)
 
 # datasets #export(lange)
 
