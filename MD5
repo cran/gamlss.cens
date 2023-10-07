@@ -1,11 +1,11 @@
-e4f2a6feaa759f029da6f00a40d125f6 *DESCRIPTION
+4e114643fd687db7ee5f64b1df8dd293 *DESCRIPTION
 42eb97cf0f22e45318b48305d5373752 *NAMESPACE
 b2e53a9a951ec532fab2d48a6e486ed3 *R/cens.R
-0664134bc1376a950c65c05f987ee43a *R/cens.d.R
-6fd74085ebb4fe15fdfb6a6436b24059 *R/cens.p.R
+5fa883bd429a581d5f85ea79233792be *R/cens.d.R
+d1efbfce3bd7a7c8db02d4875a546e5d *R/cens.p.R
 f34e49085ea9f3ec51a47a4bbc1ee72a *R/gen.cens.R
 e669f2b10df849467c15ecc9de53d250 *R/resid.surv.R
-7e2ce328026247f476637da60d04c551 *build/partial.rdb
+5eb187559d04fbaaba06768f94ac4c06 *build/partial.rdb
 1b34f8517943063d8f0ff99fcaba3567 *data/lip.rda
 dcde0aa7bf060ff659266b138c0b1f2a *man/cens.Rd
 31a3f46cf9cd181ec9231d11d3e8e3e8 *man/cens.d.Rd
